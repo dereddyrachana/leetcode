@@ -29,3 +29,5 @@
 	<li><code>0 &lt;= height[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 </div>
+
+You are going to compromise on the width but not the max height. Therefore, whenever you see a height that is greater than the ohter, change the index of the opposite pointer and recalculate the area and return the maximum area at the end.
