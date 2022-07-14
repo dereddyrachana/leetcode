@@ -18,8 +18,7 @@ class Solution:
                 return None
             else:
                 return root
-        else:
-            return None
+        
                 
         
                     
