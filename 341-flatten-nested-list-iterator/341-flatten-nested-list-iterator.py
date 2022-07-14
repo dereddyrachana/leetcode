@@ -22,23 +22,29 @@
 
 class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
-        def flatten_list(nestedList):
-            for nested_integer in nestedList:
-                if nested_integer.isInteger():
-                    self._integers.append(nested_integer.getInteger())
-                else:
-                    flatten_list(nested_integer.getList())
-        self._integers = []
-        self._position = -1
-        
-        flatten_list(nestedList)
+        self._generator = self._int_generator(nestedList)
+        self._peeked = None
+    def _int_generator(self,nested_list) -> "Generator[int]":
+        for nested_integer in nested_list:
+            if nested_integer.isInteger():
+                yield nested_integer.getInteger()
+            else:
+                yield from self._int_generator(nested_integer.getList())
     
     def next(self) -> int:
-        self._position += 1
-        return self._integers[self._position]
+        if not self.hasNext():
+            return None
+        next_integer, self._peeked = self._peeked, None
+        return next_integer
+        
     
     def hasNext(self) -> bool:
-        return self._position+1 < len(self._integers)
+        if self._peeked is not None: return True
+        try:
+            self._peeked = next(self._generator)
+            return True
+        except:
+            return False
          
 
 # Your NestedIterator object will be instantiated and called as such:
