@@ -6,21 +6,21 @@
 #         self.right = None
 
 class Solution:
-    def __init__(self):
-        self.ans = None
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         def recurse_tree(current_node):
-            if current_node is None:
+            if not current_node:
                 return False
             
-            left = recurse_tree(current_node.left)
-            right = recurse_tree(current_node.right)
+            left_recurse = recurse_tree(current_node.left)
+            right_recurse = recurse_tree(current_node.right)
             
             mid = current_node == p or current_node == q
             
-            if mid + left + right >= 2:
+            if mid + left_recurse + right_recurse >= 2:
                 self.ans = current_node
+            return mid or left_recurse or right_recurse
             
-            return mid or right or left
         recurse_tree(root)
         return self.ans
+    
+            
