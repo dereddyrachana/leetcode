@@ -6,18 +6,18 @@ class Solution:
         for i in range(0,9):
             for j in range(0,9):
                 val = board[i][j]
-                print('Val',val)
+                # print('Val',val)
                 if val == '.':
                     continue
                 else:
                     if(val not in row[i]):
                         row[i].append(val)
-                        print(row)
+                        # print(row)
                     else:
                         return False
                     if(val not in col[j]):
                         col[j].append(val)
-                        print(col)
+                        # print(col)
                     else:
                         return False
                     idx = (i//3) * 3 + (j//3) 
