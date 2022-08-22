@@ -1,18 +1,20 @@
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
         low = 0
-        high = len(nums) - 1
-        curr = 0
-        while curr <= high:
-            if(nums[curr] == 0):
-                nums[curr], nums[low] = nums[low], nums[curr]
+        high = len(nums)-1
+        index = 0
+        while index <= high:
+            if nums[index] == 0:
+                nums[index], nums[low] = nums[low], nums[index]
                 low+=1
-                curr+=1
-            elif(nums[curr] == 2):
-                nums[curr], nums[high] = nums[high], nums[curr]
-                high -=1
+                index+=1
+            elif nums[index] == 2:
+                nums[index], nums[high] = nums[high],nums[index]
+                high-=1
             else:
-                curr +=1
-            
-            
+                index+=1
         
+                
