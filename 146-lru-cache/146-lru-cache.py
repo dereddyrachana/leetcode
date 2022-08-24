@@ -1,16 +1,9 @@
 class LRUCache:
 
     def __init__(self, capacity: int):
+        self.stack = []
         self.capacity = capacity
         self.d = {}
-        self.stack = []
-
-    def get(self, key: int) -> int:
-        if key in self.d:
-            self.queue.remove(key)
-            self.queue.append(key)
-            return self.d[key]
-        return -1
 
     def get(self, key: int) -> int:
         if key in self.d:
@@ -18,25 +11,22 @@ class LRUCache:
             self.stack.append(key)
             return self.d[key]
         return -1
-    
+
     def put(self, key: int, value: int) -> None:
         if key in self.d:
             self.stack.remove(key)
             self.stack.append(key)
             self.d[key] = value
         else:
-            if len(self.stack) == self.capacity:
+            if len(self.d) == self.capacity:
                 lru = self.stack.pop(0)
                 self.d.pop(lru)
-            self.d[key] = value
             self.stack.append(key)
-            
-            
-            
-            
+            self.d[key] = value
             
             
                 
+            
         
 
 
