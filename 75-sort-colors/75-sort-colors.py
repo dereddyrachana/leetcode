@@ -1,8 +1,5 @@
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
         low = 0
         high = len(nums)-1
         index = 0
@@ -18,3 +15,6 @@ class Solution:
                 index+=1
         
                 
+                
+            
+        
