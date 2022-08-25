@@ -2,8 +2,8 @@ class LRUCache:
 
     def __init__(self, capacity: int):
         self.stack = []
-        self.capacity = capacity
         self.d = {}
+        self.capacity = capacity
 
     def get(self, key: int) -> int:
         if key in self.d:
@@ -23,10 +23,7 @@ class LRUCache:
                 self.d.pop(lru)
             self.stack.append(key)
             self.d[key] = value
-            
-            
                 
-            
         
 
 
